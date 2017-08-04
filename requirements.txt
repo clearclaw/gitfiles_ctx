@@ -1,4 +1,4 @@
-addict
+gitpython
 logtool
-pyyaml
+path.py
 setuptools-lint
