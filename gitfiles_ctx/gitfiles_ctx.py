@@ -13,7 +13,7 @@ class GitFiles_Ctx (object):
     self.fpath = tempfile.mkdtemp (prefix = prefix)
     ssh_cmd = "ssh -i {keyfile}".format (keyfile = ssh_keyfile)
     with git.Git ().custom_environment (GIT_SSH_COMMAND = ssh_cmd):
-      self.repo = self.repo.clone_from (url, self.fpath, branch = "master")
+      self.repo = git.Repo.clone_from (url, self.fpath, branch = "master")
 
   @logtool.log_call
   def __enter__ (self):
