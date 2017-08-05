@@ -1,5 +1,5 @@
-GitCtx
-======
+GitFiles_Ctx
+============
 
 This...will likely take some time to mature.  And is a hack.
 
