@@ -7,7 +7,8 @@ from codecs import open
 setup (
     name = "gitfiles_ctx",
     version = versioneer.get_version (),
-    description = "Context manager providing a file-based view on a remote Git repository.",
+    description = \
+      "Context manager for a file-based view on a remote Git repository.",
     long_description = open ("README.rst", 'r', encoding = 'utf-8').read (),
     cmdclass = versioneer.get_cmdclass (),
     classifiers = [
@@ -17,7 +18,7 @@ setup (
         + "GNU Lesser General Public License v3 or later (LGPLv3+)",
         "Topic :: Utilities",
     ],
-    keywords = "logging, exceptions, callpoints, call tracing",
+    keywords = "git, view, context",
     author = "J C Lawrence",
     author_email = "claw@kanga.nu",
     url = "https://github.com/clearclaw/gitfiles_ctx",
