@@ -9,11 +9,12 @@ from path import Path
 class GitFiles_Ctx (object):
 
   @logtool.log_call
-  def __init__ (self, url, ssh_keyfile, prefix = "gitfiles_ctx__"):
+  def __init__ (self, url, ssh_keyfile, prefix = "gitfiles_ctx__",
+                branch = "master"):
     self.fpath = tempfile.mkdtemp (prefix = prefix)
     ssh_cmd = "ssh -i {keyfile}".format (keyfile = ssh_keyfile)
     with git.Git ().custom_environment (GIT_SSH_COMMAND = ssh_cmd):
-      self.repo = git.Repo.clone_from (url, self.fpath, branch = "master")
+      self.repo = git.Repo.clone_from (url, self.fpath, branch = branch)
 
   @logtool.log_call
   def __enter__ (self):
