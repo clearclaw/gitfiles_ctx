@@ -13,7 +13,7 @@ class GitFiles_Ctx (object):
   def __init__ (self, url, ssh_keypath, prefix = "gitfiles_ctx__",
                 branch = "master"):
     self.fpath = tempfile.mkdtemp (prefix = prefix)
-    ssh_cmd = "ssh -i {keypath}".format (keypath = ssh_keypath)
+    os.environ['GIT_SSH_COMMAND'] = ssh_cmd
     git.Repo.clone_from (url, self.fpath,
                          env = {'GIT_SSH_COMMAND': ssh_cmd},
                          branch = branch)
