@@ -15,15 +15,17 @@ class GitFiles_Ctx (object):
     self.ssh_keypath = ssh_keypath
     self.prefix = prefix
     self.fpath = None
+    self.url = url
+    self.branch = branch
 
   @logtool.log_call
   def __enter__ (self):
     self.fpath = tempfile.mkdtemp (prefix = self.prefix) + "/repo"
     ssh_cmd = "ssh -i {keypath}".format (keypath = self.ssh_keypath)
     os.environ["GIT_SSH_COMMAND"] = ssh_cmd
-    git.Repo.clone_from (url, self.fpath,
+    git.Repo.clone_from (self.url, self.fpath,
                          env = {"GIT_SSH_COMMAND": ssh_cmd},
-                         branch = branch)
+                         branch = self.branch)
     return self
 
   @logtool.log_call (log_exc = True)
